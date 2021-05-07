@@ -62,7 +62,7 @@ class Volunteer(models.Model):
         self.save()
 
     def __str__(self):
-        return str(self.email)
+        return str(self.first_name)
 
 class Flier(models.Model):
     volunteer = models.ForeignKey(Volunteer, on_delete=models.CASCADE, related_name='volunteerFlier')
