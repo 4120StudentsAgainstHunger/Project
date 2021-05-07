@@ -27,7 +27,7 @@ class Institution(models.Model):
 class Location(models.Model):
     name = models.CharField(max_length=50)
     location_number = models.IntegerField(blank=False, null=False)
-    institution_num = models.ForeignKey(Institution, on_delete=models.CASCADE, related_name='locationinst')
+    institution_name = models.ForeignKey(Institution, on_delete=models.CASCADE, related_name='locationinst')
     created_date = models.DateTimeField(
         default=timezone.now)
     updated_date = models.DateTimeField(auto_now_add=True)

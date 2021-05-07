@@ -10,7 +10,7 @@ class InstitutionSerializer(serializers.ModelSerializer):
 class VolunteerSerializer(serializers.ModelSerializer):
     class Meta:
             model = Volunteer
-            fields = ('pk', 'institution_num', 'first_name', 'last_name', 'email', 'phone')
+            fields = ('pk', 'institution_name', 'first_name', 'last_name', 'email', 'phone')
 
 class EventSerializer(serializers.ModelSerializer):
     class Meta:
@@ -20,7 +20,7 @@ class EventSerializer(serializers.ModelSerializer):
 class LocationSerializer(serializers.ModelSerializer):
     class Meta:
             model = Location
-            fields = ('pk', 'location_number', 'institution_num', 'name')
+            fields = ('pk', 'location_number', 'institution_name', 'name')
 
 class FlierSerializer(serializers.ModelSerializer):
     class Meta:
