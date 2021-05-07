@@ -149,7 +149,7 @@ class BlogPage(models.Model):
     def __str__(self):
         return str(self.volunteer)
 
-class FoodPickUp(models.Model):
+class FoodRequest(models.Model):
     location = models.ForeignKey(Location, on_delete=models.CASCADE, related_name='foodrequest')
     request_title = models.CharField(max_length=50)
     request_time = models.TimeField(default=timezone.now, blank=True, null=True)

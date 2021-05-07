@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import BlogPage, FoodPickUp, Institution, Volunteer, Event, Location, Reservation, Flier
+from .models import BlogPage, FoodRequest, Institution, Volunteer, Event, Location, Reservation, Flier
 
 class InstitutionSerializer(serializers.ModelSerializer):
 
@@ -41,6 +41,6 @@ class BlogPageSerializer(serializers.ModelSerializer):
 class FoodRequestSerializer(serializers.ModelSerializer):
 
     class Meta:
-            model = FoodPickUp
+            model = FoodRequest
             fields = ('pk', 'location', 'request_time', 'request_date')
 
