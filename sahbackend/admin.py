@@ -8,13 +8,13 @@ class InstitutionList(admin.ModelAdmin):
     ordering = ['institution_name']
 
 class VolunteerList(admin.ModelAdmin):
-    list_display = ('first_name', 'last_name', 'email', 'phone')
-    list_filter = ['institution']
-    search_fields = ('first_name', 'last_name', 'institution')
+    list_display = ('last_name', 'first_name', 'email', 'phone')
+    list_filter = ['institution_num']
+    search_fields = ('first_name', 'last_name', 'institution_num')
     ordering = ['first_name']
 
 class LocationList(admin.ModelAdmin):
-    list_display = ('location_number', 'name')
+    list_display = ( 'name', 'location_number')
     list_filter = ['location_number']
     search_fields = ['name']
     ordering = ['location_number']

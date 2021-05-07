@@ -27,7 +27,7 @@ class Institution(models.Model):
 class Location(models.Model):
     name = models.CharField(max_length=50)
     location_number = models.IntegerField(blank=False, null=False)
-    institution = models.ForeignKey(Institution, on_delete=models.CASCADE, related_name='locationinst')
+    institution_num = models.ForeignKey(Institution, on_delete=models.CASCADE, related_name='locationinst')
     created_date = models.DateTimeField(
         default=timezone.now)
     updated_date = models.DateTimeField(auto_now_add=True)
@@ -41,10 +41,10 @@ class Location(models.Model):
         self.save()
 
     def __str__(self):
-        return str(self.name)
+        return str(self.location_number)
 
 class Volunteer(models.Model):
-    institution = models.ForeignKey(Institution, on_delete=models.CASCADE, related_name='volunteerinst')
+    institution_num = models.ForeignKey(Institution, on_delete=models.CASCADE, related_name='volunteerinst')
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
     email = models.EmailField(max_length=200)
