@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import BlogPage, FoodRequest, Institution, Volunteer, Flier, Event, Location, Reservation
+from .models import BlogPage, FoodPickUp, Institution, Volunteer, Flier, Event, Location, Reservation
 
 class InstitutionList(admin.ModelAdmin):
     list_display = ('institution_name', 'address', 'city', 'state', 'zipcode', 'phone')
@@ -43,14 +43,14 @@ class BlogPageList(admin.ModelAdmin):
     search_fields = ('volunteer', 'title')
     ordering = ['volunteer']
 
-class FoodRequestList(admin.ModelAdmin):
+class FoodPickUpList(admin.ModelAdmin):
     list_display = ('request_title', 'location', 'request_time', 'request_date')
     list_filter = ('location', 'request_date')
     search_fields = ('location', 'request_date')
     ordering = ['location']
 
 admin.site.register(BlogPage, BlogPageList)
-admin.site.register(FoodRequest, FoodRequestList)
+admin.site.register(FoodPickUp, FoodPickUpList)
 admin.site.register(Institution, InstitutionList)
 admin.site.register(Location, LocationList)
 admin.site.register(Event, EventList)

@@ -297,7 +297,7 @@ def getEvent(request, pk):
 def foodrequest_list(request):
     permission_classes = (IsAuthenticatedOrReadOnly)
     if request.method == 'GET':
-        foodrequests = FoodRequest.objects.all()
+        foodrequests = FoodPickUp.objects.all()
         serializer = FoodRequestSerializer(foodrequests, context={'request': request}, many=True)
         return Response({'data': serializer.data})
 
@@ -309,13 +309,13 @@ def foodrequest_list(request):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 @api_view(['GET', 'PUT', 'DELETE'])
-def getFoodRequest(request, pk):
+def getFoodPickUp(request, pk):
     """
     Retrieve, update or delete a BlogPage instance.
     """
     try:
-        foodrequests = FoodRequest.objects.get(pk=pk)
-    except FoodRequest.DoesNotExist:
+        foodrequests = FoodPickUp.objects.get(pk=pk)
+    except FoodPickUp.DoesNotExist:
         return Response(status=status.HTTP_404_NOT_FOUND)
 
     if request.method == 'GET':

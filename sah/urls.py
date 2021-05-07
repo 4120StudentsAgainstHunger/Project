@@ -49,5 +49,5 @@ urlpatterns = [
     url(r'^sahbackend/volunteers/(?P<pk>[0-9]+)$', views.getVolunteer),
     path('foodrequests/', views.foodrequest_list),
     url(r'^sahbackend/foodrequests/$', views.foodrequest_list),
-    url(r'^sahbackend/foodrequests/(?P<pk>[0-9]+)$', views.getFoodRequest),
+    url(r'^sahbackend/foodrequests/(?P<pk>[0-9]+)$', views.getFoodPickUp),
 ]
