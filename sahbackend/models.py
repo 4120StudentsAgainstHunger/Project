@@ -25,8 +25,8 @@ class Institution(models.Model):
         return str(self.institution_name)
 
 class Location(models.Model):
-    name = models.CharField(max_length=50)
-    location_number = models.IntegerField(blank=False, null=False)
+    name = models.CharField(max_length=50, blank=False, null=False)
+    location_number = models.IntegerField(blank=True, null=False)
     institution_num = models.ForeignKey(Institution, on_delete=models.CASCADE, related_name='locationinst')
     created_date = models.DateTimeField(
         default=timezone.now)
@@ -41,14 +41,14 @@ class Location(models.Model):
         self.save()
 
     def __str__(self):
-        return str(self.location_number)
+        return str(self.name)
 
 class Volunteer(models.Model):
     institution_num = models.ForeignKey(Institution, on_delete=models.CASCADE, related_name='volunteerinst')
-    first_name = models.CharField(max_length=50)
-    last_name = models.CharField(max_length=50)
-    email = models.EmailField(max_length=200)
-    phone = models.CharField(max_length=50)
+    first_name = models.CharField(max_length=50, blank=False)
+    last_name = models.CharField(max_length=50, blank=False)
+    email = models.EmailField(max_length=200, blank=True)
+    phone = models.CharField(max_length=50, blank=True)
     created_date = models.DateTimeField(
         default=timezone.now)
     updated_date = models.DateTimeField(auto_now_add=True)
@@ -69,7 +69,7 @@ class Flier(models.Model):
     start_time = models.TimeField(default=timezone.now, blank=True, null=True)
     end_time = models.TimeField(default=timezone.now, blank=True, null=True)
     date = models.DateField(default=timezone.now, blank=True, null=True)
-    description = models.CharField(max_length=200)
+    description = models.CharField(max_length=200, blank=True)
     created_date = models.DateTimeField(
         default=timezone.now)
     updated_date = models.DateTimeField(auto_now_add=True)
@@ -90,7 +90,7 @@ class Reservation(models.Model):
     start_time = models.TimeField(default=timezone.now, blank=True, null=True)
     end_time = models.TimeField(default=timezone.now, blank=True, null=True)
     date = models.DateField(default=timezone.now, blank=True, null=True)
-    description = models.CharField(max_length=200)
+    description = models.CharField(max_length=200, blank=True)
     created_date = models.DateTimeField(
         default=timezone.now)
     updated_date = models.DateTimeField(auto_now_add=True)
@@ -110,11 +110,11 @@ class Event(models.Model):
     location = models.ForeignKey(Location, on_delete=models.CASCADE, related_name='locationEvent')
     flier = models.ForeignKey(Flier, on_delete=models.CASCADE, related_name='flierEvent')
     reservation = models.ForeignKey(Reservation, on_delete=models.CASCADE, related_name='reservationEvent')
-    name = models.CharField(max_length=50)
-    start_time = models.TimeField(default=timezone.now, blank=True, null=True)
-    end_time = models.TimeField(default=timezone.now, blank=True, null=True)
-    date = models.DateField(default=timezone.now, blank=True, null=True)
-    description = models.CharField(max_length=200)
+    name = models.CharField(max_length=50, blank=False)
+    start_time = models.TimeField(default=timezone.now, blank=False, null=True)
+    end_time = models.TimeField(default=timezone.now, blank=False, null=True)
+    date = models.DateField(default=timezone.now, blank=False, null=True)
+    description = models.CharField(max_length=200, blank=True)
     created_date = models.DateTimeField(
         default=timezone.now)
     updated_date = models.DateTimeField(auto_now_add=True)
@@ -133,7 +133,7 @@ class Event(models.Model):
 class BlogPage(models.Model):
     volunteer = models.ForeignKey(Volunteer, on_delete=models.CASCADE, related_name='blogpage')
     title =  models.CharField(max_length=50)
-    description = models.CharField(max_length=200)
+    description = models.CharField(max_length=200, blank=True)
     created_date = models.DateTimeField(
         default=timezone.now)
     updated_date = models.DateTimeField(auto_now_add=True)
@@ -151,9 +151,9 @@ class BlogPage(models.Model):
 
 class FoodPickUp(models.Model):
     location = models.ForeignKey(Location, on_delete=models.CASCADE, related_name='foodrequest')
-    request_title = models.CharField(max_length=50)
-    request_time = models.TimeField(default=timezone.now, blank=True, null=True)
-    request_date = models.DateField(default=timezone.now, blank=True, null=True)
+    request_title = models.CharField(max_length=50, blank=True)
+    request_time = models.TimeField(default=timezone.now, blank=False, null=True)
+    request_date = models.DateField(default=timezone.now, blank=False, null=True)
     created_date = models.DateTimeField(
         default=timezone.now)
     updated_date = models.DateTimeField(auto_now_add=True)
